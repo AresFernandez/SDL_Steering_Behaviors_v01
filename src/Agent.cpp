@@ -7,8 +7,9 @@ Agent::Agent() : sprite_texture(0),
 	             target(Vector2D(1000, 100)),
 	             velocity(Vector2D(0,0)),
 	             speed(0.5),
-	             max_force(5),
+	             max_force(50),
 	             max_velocity(200),
+				 mass(0.1f),
 	             orientation(0),
 				 sprite_num_frames(0),
 	             sprite_w(0),
@@ -48,6 +49,14 @@ Vector2D Agent::getVelocity()
 float Agent::getMaxVelocity()
 {
 	return max_velocity;
+}
+
+float Agent::getMaxForce() {
+	return max_force;
+}
+
+float Agent::getMass() {
+	return mass;
 }
 
 void Agent::setPosition(Vector2D _position)
