@@ -45,6 +45,11 @@ Vector2D Agent::getVelocity()
 	return velocity;
 }
 
+Agent* Agent::getTargetAgent()
+{
+	return targetAgent;
+}
+
 float Agent::getMaxVelocity()
 {
 	return max_velocity;
@@ -66,6 +71,11 @@ void Agent::setPosition(Vector2D _position)
 void Agent::setTarget(Vector2D _target)
 {
 	target = _target;
+}
+
+void Agent::setTargetAgent(Agent* _agent)
+{
+	targetAgent = _agent;
 }
 
 void Agent::setVelocity(Vector2D _velocity)

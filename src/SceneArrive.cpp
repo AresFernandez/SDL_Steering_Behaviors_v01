@@ -48,5 +48,5 @@ void SceneArrive::draw()
 
 const char* SceneArrive::getTitle()
 {
-	return "SDL Steering Behaviors :: Seek Demo";
+	return "SDL Steering Behaviors :: Arrive Demo";
 }

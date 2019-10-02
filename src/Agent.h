@@ -23,6 +23,7 @@ private:
 	Vector2D position;
 	Vector2D velocity;
 	Vector2D target;
+	Agent *targetAgent;
 
 	float orientation;
 	float max_force;
@@ -41,12 +42,14 @@ public:
 	Vector2D getPosition();
 	Vector2D getTarget();
 	Vector2D getVelocity();
+	Agent* getTargetAgent();
 	float getMaxVelocity();
 	float getMaxForce();
 	float getMass();
 	void setBehavior(SteeringBehavior *behavior);
 	void setPosition(Vector2D position);
 	void setTarget(Vector2D target);
+	void setTargetAgent(Agent*);
 	void setVelocity(Vector2D velocity);
 	void update(float dtime, SDL_Event *event);
 	void draw();
