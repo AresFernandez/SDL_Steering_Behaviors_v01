@@ -50,6 +50,7 @@ public:
 	void setVelocity(Vector2D velocity);
 	void update(float dtime, SDL_Event *event);
 	void draw();
+	void drawRadius(float);
 	bool Agent::loadSpriteTexture(char* filename, int num_frames=1);
 	
 };

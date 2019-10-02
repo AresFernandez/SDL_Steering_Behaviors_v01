@@ -125,6 +125,11 @@ void Agent::draw()
 	}
 }
 
+void Agent::drawRadius(float radius)
+{
+	draw_circle(TheApp::Instance()->getRenderer(), (int)position.x, (int)position.y, radius, 255, 255, 255, 255);
+}
+
 bool Agent::loadSpriteTexture(char* filename, int _num_frames)
 {
 	if (_num_frames < 1) return false;

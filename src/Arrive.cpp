@@ -13,7 +13,8 @@ Arrive::~Arrive()
 
 void Arrive::applySteeringForce(Agent *agent, float dtime)
 {
-	float slowingRadius = 2;
+	float slowingRadius = 200;
+	agent->drawRadius(slowingRadius);
 	///Getting Steering Force Vector
 	//Get desired Direction
 	Vector2D DesiredVelocity = agent->getTarget() - agent->getPosition();
@@ -25,6 +26,10 @@ void Arrive::applySteeringForce(Agent *agent, float dtime)
 	DesiredVelocity.Normalize();
 	if (distance <= slowingRadius)
 		auxVelocity = agent->getMaxVelocity() * factor;
+
+	//Don't apply force if they are too close (this is to avoid flickering moves)
+	if (distance <= 1)
+		return;
 
 	DesiredVelocity *= auxVelocity;
 	//Calculate Steering Force Vector necessary to correct trajectory
