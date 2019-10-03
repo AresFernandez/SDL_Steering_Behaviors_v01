@@ -16,6 +16,7 @@ ScenePursue::ScenePursue()
 	agent = new Agent();
 	agent->setBehavior(new Pursue);
 	agent->setTargetAgent(agents[0]);
+	agent->setMaxVelocity(150);
 	agent->loadSpriteTexture("../res/zombie1.png", 8);
 	agents.push_back(agent);
 }
@@ -52,7 +53,7 @@ void ScenePursue::update(float dtime, SDL_Event *event)
 
 void ScenePursue::draw()
 {
-	draw_circle(TheApp::Instance()->getRenderer(), (int)agents[0]->getPosition().x, (int)target.y, 15, 255, 0, 0, 255);
+	draw_circle(TheApp::Instance()->getRenderer(), (int)target.x, (int)target.y, 15, 255, 0, 0, 255);
 
 	for (int i = 0; i < (int)agents.size(); i++)
 	{

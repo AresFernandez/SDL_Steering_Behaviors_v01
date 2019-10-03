@@ -11,12 +11,11 @@ Pursue::~Pursue()
 void Pursue::applySteeringForce(Agent *agent, float dtime)
 {
 	Vector2D PredictedTarget = agent->getTargetAgent()->getPosition() + agent->getTargetAgent()->getVelocity();
-	//float distanceToPT = (agent->getPosition() - PredictedTarget).Length();
-	//float T = distanceToPT /  agent->getMaxVelocity();
-	//if (agent->getVelocity().Length() > 1)
-	//	T = distanceToPT / agent->getVelocity().Length();
+	float distanceToPT = (agent->getPosition() - agent->getTargetAgent()->getPosition()).Length();
+	float T = distanceToPT /  agent->getTargetAgent()->getMaxVelocity();
 
-	//PredictedTarget = (agent->getTargetAgent()->getPosition() + agent->getTargetAgent()->getVelocity()) * T;
+	PredictedTarget = agent->getTargetAgent()->getPosition() + agent->getTargetAgent()->getVelocity() * T;
+	draw_circle(TheApp::Instance()->getRenderer(), PredictedTarget.x, PredictedTarget.y, 15, 0, 0, 255, 255);
 
 	///Getting Steering Force Vector
 	//Get desired Direction

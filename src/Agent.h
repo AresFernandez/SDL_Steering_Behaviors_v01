@@ -51,6 +51,7 @@ public:
 	void setTarget(Vector2D target);
 	void setTargetAgent(Agent*);
 	void setVelocity(Vector2D velocity);
+	void setMaxVelocity(float velocity);
 	void update(float dtime, SDL_Event *event);
 	void draw();
 	void drawRadius(float);
