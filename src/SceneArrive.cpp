@@ -12,6 +12,7 @@ SceneArrive::SceneArrive()
 	agent->loadSpriteTexture("../res/soldier.png", 4);
 	agents.push_back(agent);
 	target = Vector2D(640, 360);
+	showArriveRadius = true;
 }
 
 SceneArrive::~SceneArrive()
@@ -33,6 +34,10 @@ void SceneArrive::update(float dtime, SDL_Event *event)
 			target = Vector2D((float)(event->button.x), (float)(event->button.y));
 			agents[0]->setTarget(target);
 		}
+		if (event->button.button == SDL_BUTTON_RIGHT)
+		{
+			showArriveRadius = false;
+		}
 		break;
 	default:
 		break;
@@ -42,7 +47,8 @@ void SceneArrive::update(float dtime, SDL_Event *event)
 
 void SceneArrive::draw()
 {
-	draw_circle(TheApp::Instance()->getRenderer(), (int)target.x, (int)target.y, 15, 255, 0, 0, 255);
+	if(showArriveRadius)
+		draw_circle(TheApp::Instance()->getRenderer(), (int)target.x, (int)target.y, 15, 255, 0, 0, 255);
 	agents[0]->draw();
 }
 

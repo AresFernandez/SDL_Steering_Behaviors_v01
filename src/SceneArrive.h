@@ -15,4 +15,5 @@ public:
 private:
 	std::vector<Agent*> agents;
 	Vector2D target;
+	bool showArriveRadius;
 };
