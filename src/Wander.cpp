@@ -11,14 +11,19 @@ Wander::~Wander()
 void Wander::applySteeringForce(Agent *agent, float dtime)
 {
 	float WanderRadius = 100;
-	int MaxAngleChange = 180;
+	int MaxAngleChange = 1;
 	static float angle = 0;
-	angle += (rand() % (MaxAngleChange + 1))*0.0005f;
+	int sign = 1;
+	if ((rand() % 2) == 0)
+		sign *= -1;
+	angle += sign * (rand() % (MaxAngleChange + 1));
 
 	Vector2D WanderTarget;
-	WanderTarget.x = agent->getTarget().x + WanderRadius * cos(angle * M_PI / 180.0f);
-	WanderTarget.y = agent->getTarget().y + WanderRadius * sin(angle * M_PI / 180.0f);
+	WanderTarget.x = agent->getPosition().x + agent->getVelocity().x + WanderRadius * cos(angle * M_PI / 180.0f);
+	WanderTarget.y = agent->getPosition().y + agent->getVelocity().y + WanderRadius * sin(angle * M_PI / 180.0f);
 
+	draw_circle(TheApp::Instance()->getRenderer(), (int)agent->getPosition().x + agent->getVelocity().x, 
+		(int)agent->getPosition().y + agent->getVelocity().y, WanderRadius, 0, 0, 255, 255);
 	draw_circle(TheApp::Instance()->getRenderer(), (int)WanderTarget.x, (int)WanderTarget.y, 15, 0, 0, 255, 255);
 
 	///Getting Steering Force Vector

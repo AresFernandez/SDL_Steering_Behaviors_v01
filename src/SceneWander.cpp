@@ -29,10 +29,7 @@ void SceneWander::update(float dtime, SDL_Event *event)
 	case SDL_MOUSEMOTION:
 	case SDL_MOUSEBUTTONDOWN:
 		if (event->button.button == SDL_BUTTON_LEFT)
-		{
-			target = Vector2D((float)(event->button.x), (float)(event->button.y));
-			agents[0]->setTarget(target);
-		}
+		{	}
 		break;
 	default:
 		break;
@@ -42,7 +39,6 @@ void SceneWander::update(float dtime, SDL_Event *event)
 
 void SceneWander::draw()
 {
-	draw_circle(TheApp::Instance()->getRenderer(), (int)target.x, (int)target.y, 15, 255, 0, 0, 255);
 	agents[0]->draw();
 }
 
