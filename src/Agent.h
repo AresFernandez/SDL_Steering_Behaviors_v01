@@ -39,6 +39,9 @@ private:
 public:
 	Agent();
 	~Agent();
+
+	std::vector<Agent*> neighborhood;
+
 	Vector2D getPosition();
 	Vector2D getTarget();
 	Vector2D getVelocity();
@@ -56,5 +59,5 @@ public:
 	void draw();
 	void drawRadius(float);
 	bool Agent::loadSpriteTexture(char* filename, int num_frames=1);
-	
+	void UpdateNeighborhood(std::vector<Agent*> agents, float radius);
 };

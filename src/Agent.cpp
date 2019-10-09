@@ -166,3 +166,17 @@ bool Agent::loadSpriteTexture(char* filename, int _num_frames)
 
 	return true;
 }
+
+void Agent::UpdateNeighborhood(std::vector<Agent*> agents, float radius)
+{
+	neighborhood.clear();
+
+	for each (Agent* agent in agents)
+	{
+		if (agent != this)
+		{
+			if (Vector2D::Distance(agent->getPosition(), getPosition()) < radius)
+				neighborhood.push_back(agent);
+		}
+	}
+}
