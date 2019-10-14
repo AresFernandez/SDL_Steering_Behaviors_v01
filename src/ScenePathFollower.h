@@ -3,20 +3,17 @@
 #include "Scene.h"
 #include "Agent.h"
 
-class SceneFlocking :
+class ScenePathFollower :
 	public Scene
 {
 public:
-	SceneFlocking();
-	~SceneFlocking();
+	ScenePathFollower();
+	~ScenePathFollower();
 	void update(float dtime, SDL_Event *event);
 	void draw();
 	const char* getTitle();
 
 	bool lastFrame;
-	float NeighborSRadius;
-	float NeighborCRadius;
-	float NeighborARadius;
 private:
 	std::vector<Agent*> agents;
 	Vector2D target;

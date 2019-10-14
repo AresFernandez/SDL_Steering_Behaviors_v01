@@ -13,7 +13,8 @@ Agent::Agent() : sprite_texture(0),
 				 sprite_num_frames(0),
 	             sprite_w(0),
 	             sprite_h(0),
-	             draw_sprite(false)
+	             draw_sprite(false),
+				 currentPathPoint(0)
 {
 }
 
@@ -167,16 +168,27 @@ bool Agent::loadSpriteTexture(char* filename, int _num_frames)
 	return true;
 }
 
-void Agent::UpdateNeighborhood(std::vector<Agent*> agents, float radius)
+void Agent::UpdateNeighborhood(std::vector<Agent*> agents, float ARadius, float CRadius, float SRadius )
 {
-	neighborhood.clear();
+	AlignmentNeighborhood.clear();
+	CohesionNeighborhood.clear();
+	SeparationNeighborhood.clear();
+
 
 	for each (Agent* agent in agents)
 	{
 		if (agent != this)
 		{
-			if (Vector2D::Distance(agent->getPosition(), getPosition()) < radius)
-				neighborhood.push_back(agent);
+			if (Vector2D::Distance(agent->getPosition(), getPosition()) < ARadius)
+				AlignmentNeighborhood.push_back(agent);
+			if (Vector2D::Distance(agent->getPosition(), getPosition()) < CRadius)
+				CohesionNeighborhood.push_back(agent);
+			if (Vector2D::Distance(agent->getPosition(), getPosition()) < SRadius)
+				SeparationNeighborhood.push_back(agent);
 		}
 	}
+
+
+
+
 }

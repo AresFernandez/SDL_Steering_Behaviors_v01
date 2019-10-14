@@ -40,7 +40,12 @@ public:
 	Agent();
 	~Agent();
 
-	std::vector<Agent*> neighborhood;
+	std::vector<Agent*> CohesionNeighborhood;
+	std::vector<Agent*> SeparationNeighborhood;
+	std::vector<Agent*> AlignmentNeighborhood;
+	std::vector<Vector2D> path;
+
+	int currentPathPoint;
 
 	Vector2D getPosition();
 	Vector2D getTarget();
@@ -59,5 +64,5 @@ public:
 	void draw();
 	void drawRadius(float);
 	bool Agent::loadSpriteTexture(char* filename, int num_frames=1);
-	void UpdateNeighborhood(std::vector<Agent*> agents, float radius);
+	void Agent::UpdateNeighborhood(std::vector<Agent*> agents, float ARadius, float CRadius, float SRadius);
 };

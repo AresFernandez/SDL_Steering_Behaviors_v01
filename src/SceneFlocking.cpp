@@ -5,7 +5,9 @@ using namespace std;
 
 SceneFlocking::SceneFlocking()
 {
-	NeighborRadius = 300;
+	NeighborSRadius = 50;
+	NeighborCRadius = 300;
+	NeighborARadius = 150;
 	lastFrame = false;
 }
 
@@ -29,6 +31,7 @@ void SceneFlocking::update(float dtime, SDL_Event *event)
 			Agent *agent = new Agent;
 			agent->setBehavior(new Flocking);
 			agent->setPosition(Vector2D(event->button.x, event->button.y));
+			//agent->setMaxVelocity(agent->getMaxVelocity() / 2.f);
 			agent->setVelocity(Vector2D(agent->getMaxVelocity(), 0));
 			agent->loadSpriteTexture("../res/zombie1.png", 8);
 			agents.push_back(agent);
@@ -43,7 +46,7 @@ void SceneFlocking::update(float dtime, SDL_Event *event)
 
 	for each (Agent* agent in agents)
 	{
-		agent->UpdateNeighborhood(agents, NeighborRadius);
+		agent->UpdateNeighborhood(agents, NeighborARadius, NeighborCRadius, NeighborSRadius);
 		agent->update(dtime, event);
 	}
 }
@@ -58,5 +61,5 @@ void SceneFlocking::draw()
 
 const char* SceneFlocking::getTitle()
 {
-	return "SDL Steering Behaviors :: Wander Demo";
+	return "SDL Steering Behaviors :: Flocking Demo";
 }
