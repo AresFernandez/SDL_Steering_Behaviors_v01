@@ -14,6 +14,7 @@ public:
 	const char* getTitle();
 
 	bool lastFrame;
+
 private:
 	std::vector<Agent*> agents;
 	Vector2D target;

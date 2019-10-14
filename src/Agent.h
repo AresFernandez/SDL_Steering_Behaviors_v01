@@ -45,6 +45,17 @@ public:
 	std::vector<Agent*> AlignmentNeighborhood;
 	std::vector<Vector2D> path;
 
+	struct Obstacle
+	{
+		Obstacle(Vector2D v) {
+			init = v;
+			end = NULL;
+		}
+		Vector2D init;
+		Vector2D end;
+	};
+	std::vector<Obstacle> obstacles;
+
 	int currentPathPoint;
 
 	Vector2D getPosition();

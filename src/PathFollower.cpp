@@ -10,6 +10,8 @@ PathFollower::~PathFollower()
 
 void PathFollower::applySteeringForce(Agent *agent, float dtime)
 {
+
+	
 	float proximityRadius = 20;
 
 	if (agent->path.size() > 0)
